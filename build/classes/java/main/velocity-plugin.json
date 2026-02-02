@@ -1,0 +1,1 @@
+{"id":"maintenance-queue","name":"MaintenanceQueue","version":"1.0.0","description":"Plugin de file d\u0027attente pour maintenance avec système de rangs","authors":["AotSMP"],"dependencies":[],"main":"fr.aotsmp.maintenance.MaintenanceQueuePlugin"}

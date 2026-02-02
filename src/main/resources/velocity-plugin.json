@@ -1,0 +1,9 @@
+{
+  "id": "maintenance-queue",
+  "name": "MaintenanceQueue",
+  "version": "${version}",
+  "description": "${description}",
+  "authors": ["AotSMP"],
+  "main": "fr.aotsmp.maintenance.MaintenanceQueuePlugin",
+  "dependencies": []
+}

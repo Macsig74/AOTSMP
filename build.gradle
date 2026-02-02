@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'fr.aotsmp'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    // Changement de 3.2.0 vers 3.3.0-SNAPSHOT
+    compileOnly 'com.velocitypowered:velocity-api:3.3.0-SNAPSHOT'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.3.0-SNAPSHOT'
+
+    implementation 'net.kyori:adventure-text-serializer-legacy:4.17.0'
+    implementation 'org.yaml:snakeyaml:2.2'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+shadowJar {
+    archiveBaseName.set('MaintenanceQueue')
+    archiveClassifier.set('')
+    archiveVersion.set(version)
+}
+
+tasks.build.dependsOn shadowJar
+
+processResources {
+    filesMatching('velocity-plugin.json') {
+        expand(
+                version: project.version,
+                description: "Plugin de file d'attente pour maintenance avec système de rangs"
+        )
+    }
+}

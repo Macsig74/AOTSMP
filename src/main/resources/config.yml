@@ -1,0 +1,35 @@
+# Configuration du plugin MaintenanceQueue
+
+# Serveurs
+servers:
+  lobby: "lobby"  # Nom du serveur lobby dans velocity.toml
+  smp: "smp"      # Nom du serveur SMP dans velocity.toml
+
+# Maintenance
+maintenance:
+  # Délai entre chaque kick/reconnexion (en secondes)
+  kick-delay: 1
+  reconnect-delay: 1
+  
+  # Redémarrer automatiquement le SMP quand il est vide
+  auto-restart: true
+  
+  # Commande de restart (exécutée sur le SMP)
+  restart-command: "restart"
+
+# Messages
+messages:
+  maintenance-enabled: "§c§lMAINTENANCE §7» §eLe serveur passe en maintenance..."
+  kick-to-lobby: "§c§lMAINTENANCE §7» §eTransfert vers le lobby..."
+  reconnect-to-smp: "§a§lMAINTENANCE §7» §aReconnexion au serveur... Position: §e{position}§a/{total}"
+  blocked-connection: "§c§lMAINTENANCE\n\n§7Le serveur est actuellement en maintenance.\n§7Merci de patienter au lobby."
+  smp-empty: "§e§lMAINTENANCE §7» §eSMP vide, redémarrage en cours..."
+  maintenance-disabled: "§a§lMAINTENANCE §7» §aMaintenance terminée !"
+  already-in-maintenance: "§cLe serveur est déjà en maintenance !"
+  not-in-maintenance: "§cLe serveur n'est pas en maintenance !"
+  priority-added: "§a{player} §7a été ajouté à la liste prioritaire !"
+  priority-removed: "§c{player} §7a été retiré de la liste prioritaire !"
+  priority-list: "§e§lLISTE PRIORITAIRE §7({count}):"
+  priority-list-entry: "  §7- §e{player}"
+  priority-list-empty: "§7La liste prioritaire est vide."
+  player-not-found: "§cJoueur introuvable !"
