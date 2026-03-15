@@ -1,24 +1,40 @@
 package main.shop;
 
 import com.earth2me.essentials.Essentials;
-import main.shop.command.ShopCommand;
+import main.shop.command.*;
+import main.shop.listeners.AfkListener;
+import main.shop.managers.ShardManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.sql.SQLException;
 
 public class Shop extends JavaPlugin {
 
     private static Shop instance;
     private Essentials ess;
+    private ShardManager shardManager;
 
     @Override
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
-
-        // Enregistre la commande /shop
         getCommand("shop").setExecutor(new ShopCommand());
-        ess = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");
+        getCommand("setafk").setExecutor(new SetAfkCommand());
+        getCommand("setspawn").setExecutor(new SetSpawnCommand());
+        getCommand("afk").setExecutor(new AfkCommand());
+        getCommand("spawn").setExecutor(new SpawnCommand());
 
+        new AfkListener(this);
+
+        ess = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");
+        shardManager = new ShardManager(this);
+        try {
+            shardManager.connect();
+            shardManager.createTable();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         getLogger().info("ShopPlugin activé !");
     }
 
@@ -29,7 +45,7 @@ public class Shop extends JavaPlugin {
     public Essentials getEssentials() {
         return ess;
     }
-
+    public ShardManager getShardManager() {return shardManager;}
     public static Shop getInstance() {
         return instance;
     }

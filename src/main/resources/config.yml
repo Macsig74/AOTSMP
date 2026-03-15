@@ -1,0 +1,61 @@
+shard-shop:
+  keys:
+    common:
+      material: TRIPWIRE_HOOK
+      name: "§fCommon Key"
+      slot: 1
+      price: 100
+      command: "give %player% tripwire_hook 1"
+    netherite:
+      material: TRIPWIRE_HOOK
+      name: "§5Netherite Key"
+      slot: 2
+      price: 500
+      command: "give %player% tripwire_hook 1"
+    aot:
+      material: TRIPWIRE_HOOK
+      name: "§6AOT Key"
+      slot: 3
+      price: 750
+      command: "give %player% tripwire_hook 1"
+    spawner:
+      material: TRIPWIRE_HOOK
+      name: "§bSpawner Key"
+      slot: 4
+      price: 1000
+      command: "give %player% tripwire_hook 1"
+    amethyst:
+      material: TRIPWIRE_HOOK
+      name: "§dAmethyst Key"
+      slot: 5
+      price: 2000
+      command: "give %player% tripwire_hook 1"
+  spawners:
+    zombified_piglin:
+      material: SPAWNER
+      name: "§fZombified Piglin Spawner"
+      slot: 9
+      price: 5000
+      command: "give %player% spawner 1"
+
+
+
+
+spawn:
+  world: world
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+  teleport-delay: 5
+  sound: ENTITY_ENDERMAN_TELEPORT
+afk:
+  world: world
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+  teleport-delay: 5
+  sound: ENTITY_ENDERMAN_TELEPORT

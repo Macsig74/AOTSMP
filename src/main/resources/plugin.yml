@@ -8,4 +8,16 @@ depend: [Essentials]
 commands:
   shop:
     usage: /shop
-    description: ouvre shop
+    description: Ouvre le shop
+  spawn:
+    usage: /spawn
+    description: Téléporte au spawn
+  setspawn:
+    usage: /setspawn
+    description: Définit le spawn
+  afk:
+    usage: /afk
+    description: Téléporte en zone AFK
+  setafk:
+    usage: /setafk
+    description: Définit la zone AFK

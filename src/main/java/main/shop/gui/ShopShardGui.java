@@ -3,6 +3,7 @@ package main.shop.gui;
 import main.shop.Shop;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,6 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -48,9 +50,32 @@ public class ShopShardGui implements InventoryHolder, Listener {
         item.setItemMeta(meta);
         inv.setItem(slot, item);
     }
+    private void setShardCategory(int slot, Material material, String name, int price) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        meta.setLore(Collections.singletonList("§5Prix : " + price + " Shards"));
+        item.setItemMeta(meta);
+        inv.setItem(slot, item);
+    }
+    private void loadFromConfig() {
+        ConfigurationSection keys = Shop.getInstance().getConfig().getConfigurationSection("shard-shop.keys");
+        if (keys == null) return;
+
+        for (String key : keys.getKeys(false)) {
+            int slot = keys.getInt(key + ".slot");
+            Material material = Material.valueOf(keys.getString(key + ".material"));
+            String name = keys.getString(key + ".name");
+            int price = keys.getInt(key + ".price");
+            setShardCategory(slot, material, name, price);
+        }
+    }
+
+
 
     public void open(Player player) {
         inv = Bukkit.createInventory(this, 27, "ʙᴏᴜᴛɪǫᴜᴇ - ѕʜᴀʀᴅ");
+        loadFromConfig();
         setBack(18);
         player.openInventory(inv);
     }
@@ -62,8 +87,35 @@ public class ShopShardGui implements InventoryHolder, Listener {
         if (e.getCurrentItem() == null) return;
         Player p = (Player) e.getWhoClicked();
         int slot = e.getSlot();
+
         if (slot == 18) {
             new ShopMainGui(plugin).open(p);
+            return;
+        }
+        ConfigurationSection keys = plugin.getConfig().getConfigurationSection("shard-shop.keys");
+        ConfigurationSection spawners = plugin.getConfig().getConfigurationSection("shard-shop.spawners");
+        for (ConfigurationSection section : Arrays.asList(keys, spawners)) {
+            if (section == null) continue;
+            for (String key : section.getKeys(false)) {
+                if (section.getInt(key + ".slot") != slot) continue;
+
+                int price = section.getInt(key + ".price");
+                String command = section.getString(key + ".command");
+
+                try {
+                    int shards = Shop.getInstance().getShardManager().getShards(p);
+                    if (shards < price) {
+                        p.sendMessage("§cTu n'as pas assez de shards ! §5(" + shards + "/" + price + ")");
+                        return;
+                    }
+                    Shop.getInstance().getShardManager().setShards(p, shards - price);
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", p.getName()));
+                } catch (SQLException ex) {
+                    p.sendMessage("§cErreur lors de l'achat !");
+                    ex.printStackTrace();
+                }
+                return;
+            }
         }
     }
 }

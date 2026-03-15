@@ -117,7 +117,7 @@ public class BuyConfirmGui implements InventoryHolder, Listener {
         BigDecimal price = Shop.getInstance().getEssentials().getWorth().getPrice(Shop.getInstance().getEssentials(), new ItemStack(material));
         BigDecimal total = price.multiply(BigDecimal.valueOf(quantity));
         User user = Shop.getInstance().getEssentials().getUser(player);
-//TODO FIX: +64 ca met 65 faut mettre max a 64
+
 
         if (user.getMoney().compareTo(total) >= 0){
             try {
