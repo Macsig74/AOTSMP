@@ -20,11 +20,10 @@ public class Shop extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
         getCommand("shop").setExecutor(new ShopCommand());
-        getCommand("setafk").setExecutor(new SetAfkCommand());
-        getCommand("setspawn").setExecutor(new SetSpawnCommand());
-        getCommand("afk").setExecutor(new AfkCommand());
-        getCommand("spawn").setExecutor(new SpawnCommand());
-
+        getCommand("setafk").setExecutor(new SetAfkCommand(this));
+        getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
+        getCommand("afk").setExecutor(new AfkCommand(this));
+        getCommand("spawn").setExecutor(new SpawnCommand(this));
         new AfkListener(this);
 
         ess = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");

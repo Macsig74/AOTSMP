@@ -12,7 +12,7 @@ public class SetAfkCommand implements CommandExecutor {
     private Shop plugin;
 
 
-    public SetAfkCommand() {
+    public SetAfkCommand(Shop shop) {
         this.plugin = plugin;
     }
 

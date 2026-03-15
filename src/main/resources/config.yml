@@ -51,7 +51,7 @@ spawn:
   teleport-delay: 5
   sound: ENTITY_ENDERMAN_TELEPORT
 afk:
-  world: world
+  world: afk
   x: 0.0
   y: 64.0
   z: 0.0

@@ -13,7 +13,7 @@ public class SpawnCommand implements CommandExecutor {
 
     private Shop plugin;
 
-    public SpawnCommand() {
+    public SpawnCommand(Shop shop) {
         this.plugin = plugin;
     }
 
