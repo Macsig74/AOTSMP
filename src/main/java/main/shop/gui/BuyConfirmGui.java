@@ -1,6 +1,9 @@
 package main.shop.gui;
 
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.messaging.IMessageRecipient;
 import main.shop.Shop;
+import net.ess3.api.MaxMoneyException;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
@@ -12,6 +15,8 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.math.BigDecimal;
 
 
 public class BuyConfirmGui implements InventoryHolder, Listener {
@@ -79,20 +84,19 @@ public class BuyConfirmGui implements InventoryHolder, Listener {
         String itemName = meta.getDisplayName();
 
         switch (itemName) {
-            case "§cAnnuler" -> {
+            case "Annuler" -> {
                 player.closeInventory();
-                player.sendMessage("§cAchat annulé.");
+                player.sendMessage("Achat annulé.");
             }
-            case "§aConfirmer" -> {
-                player.closeInventory();
+            case "Confirmer" -> {
                 handlePurchase(player);
             }
-            case "§c-1"  -> changeQuantity(player, -1);
-            case "§c-10" -> changeQuantity(player, -10);
-            case "§c-64" -> changeQuantity(player, -64);
-            case "§a+1"  -> changeQuantity(player, 1);
-            case "§a+10" -> changeQuantity(player, 10);
-            case "§a+64" -> changeQuantity(player, 64);
+            case "-1"  -> changeQuantity(player, -1);
+            case "-10" -> changeQuantity(player, -10);
+            case "-64" -> changeQuantity(player, -64);
+            case "+1"  -> changeQuantity(player, 1);
+            case "+10" -> changeQuantity(player, 10);
+            case "+64" -> changeQuantity(player, 64);
         }
     }
 
@@ -110,7 +114,23 @@ public class BuyConfirmGui implements InventoryHolder, Listener {
     }
 
     private void handlePurchase(Player player) {
-        // TODO faire la logique dachat les freres
-        player.sendMessage("§aVous avez acheté §e" + quantity + "x " + material.name() + "§a.");
+        BigDecimal price = Shop.getInstance().getEssentials().getWorth().getPrice(Shop.getInstance().getEssentials(), new ItemStack(material));
+        BigDecimal total = price.multiply(BigDecimal.valueOf(quantity));
+        User user = Shop.getInstance().getEssentials().getUser(player);
+
+
+        if (user.getMoney().compareTo(total) >= 0){
+            try {
+                user.setMoney(user.getMoney().subtract(total));
+            } catch (MaxMoneyException e) {
+                throw new RuntimeException(e);
+            }
+            player.getInventory().addItem(new ItemStack(material, quantity));
+        } else {
+            player.sendMessage("Tu n'as pas assez d'argent");
+        }
+
+
+
     }
 }
