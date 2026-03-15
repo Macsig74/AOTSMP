@@ -13,7 +13,7 @@ public class AfkCommand implements CommandExecutor {
 
     private  Shop plugin;
     
-    public AfkCommand(Shop shop) {
+    public AfkCommand(Shop plugin) {
         this.plugin = plugin;
     }
 

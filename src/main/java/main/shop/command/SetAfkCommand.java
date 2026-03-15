@@ -12,7 +12,7 @@ public class SetAfkCommand implements CommandExecutor {
     private Shop plugin;
 
 
-    public SetAfkCommand(Shop shop) {
+    public SetAfkCommand(Shop plugin) {
         this.plugin = plugin;
     }
 
@@ -22,12 +22,12 @@ public class SetAfkCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + "Commande pour joueur");
             return true;
         }
-        plugin.getConfig().set("spawn.world",  player.getWorld().getName());
-        plugin.getConfig().set("spawn.x",  player.getLocation().getX());
-        plugin.getConfig().set("spawn.y",  player.getLocation().getY());
-        plugin.getConfig().set("spawn.z",  player.getLocation().getZ());
-        plugin.getConfig().set("spawn.yaw",  player.getLocation().getYaw());
-        plugin.getConfig().set("spawn.pitch",  player.getLocation().getPitch());
+        plugin.getConfig().set("afk.world",  player.getWorld().getName());
+        plugin.getConfig().set("afk.x",  player.getLocation().getX());
+        plugin.getConfig().set("afk.y",  player.getLocation().getY());
+        plugin.getConfig().set("afk.z",  player.getLocation().getZ());
+        plugin.getConfig().set("afk.yaw",  player.getLocation().getYaw());
+        plugin.getConfig().set("afk.pitch",  player.getLocation().getPitch());
         plugin.saveConfig();
         player.sendMessage(ChatColor.GREEN + "AFK configuré");
         return true;

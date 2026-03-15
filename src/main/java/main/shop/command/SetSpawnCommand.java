@@ -11,7 +11,7 @@ public class SetSpawnCommand implements CommandExecutor {
 
     private Shop plugin;
 
-    public SetSpawnCommand(Shop shop) {
+    public SetSpawnCommand(Shop plugin) {
         this.plugin = plugin;
     }
 
