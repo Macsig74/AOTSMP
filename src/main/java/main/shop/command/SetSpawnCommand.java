@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 public class SetSpawnCommand implements CommandExecutor {
 
-    private final Shop plugin;
+    private Shop plugin;
 
     public SetSpawnCommand() {
         this.plugin = plugin;

@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class SpawnCommand implements CommandExecutor {
 
-    private final Shop plugin;
+    private Shop plugin;
 
     public SpawnCommand() {
         this.plugin = plugin;

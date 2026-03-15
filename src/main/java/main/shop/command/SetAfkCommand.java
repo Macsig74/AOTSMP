@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 public class SetAfkCommand implements CommandExecutor {
 
-    private final Shop plugin;
+    private Shop plugin;
 
 
     public SetAfkCommand() {
