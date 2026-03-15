@@ -1,0 +1,11 @@
+name: Shop
+version: '1.0'
+main: main.shop.Shop
+api-version: '1.21'
+author: Macsig74
+depend: [Essentials]
+
+commands:
+  shop:
+    usage: /shop
+    description: ouvre shop
