@@ -109,7 +109,7 @@ public class BuyConfirmGui implements InventoryHolder, Listener {
     }
 
     private void changeQuantity(Player player, int delta) {
-        quantity = Math.max(1, quantity + delta); // Jamais en dessous de 1
+        quantity = Math.max(1, Math.min(64, quantity + delta));
         refreshGui(player);
     }
 
@@ -117,7 +117,7 @@ public class BuyConfirmGui implements InventoryHolder, Listener {
         BigDecimal price = Shop.getInstance().getEssentials().getWorth().getPrice(Shop.getInstance().getEssentials(), new ItemStack(material));
         BigDecimal total = price.multiply(BigDecimal.valueOf(quantity));
         User user = Shop.getInstance().getEssentials().getUser(player);
-
+//TODO FIX: +64 ca met 65 faut mettre max a 64
 
         if (user.getMoney().compareTo(total) >= 0){
             try {
