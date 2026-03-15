@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 
 public class AfkCommand implements CommandExecutor {
 
-    private final Shop plugin;
+    private  Shop plugin;
     
     public AfkCommand() {
         this.plugin = plugin;
