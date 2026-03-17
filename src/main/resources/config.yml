@@ -49,7 +49,8 @@ spawn:
   yaw: 0.0
   pitch: 0.0
   teleport-delay: 5
-  sound: ENTITY_ENDERMAN_TELEPORT
+  sound-countdown: BLOCK_NOTE_BLOCK_PLING
+  sound-arrival: ENTITY_ENDERMAN_TELEPORT
 afk:
   world: afk
   x: 0.0
@@ -58,4 +59,5 @@ afk:
   yaw: 0.0
   pitch: 0.0
   teleport-delay: 5
-  sound: ENTITY_ENDERMAN_TELEPORT
+  sound-countdown: BLOCK_NOTE_BLOCK_PLING
+  sound-arrival: ENTITY_ENDERMAN_TELEPORT

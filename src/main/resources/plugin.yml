@@ -1,5 +1,5 @@
 name: Shop
-version: '1.0'
+version: '2.1.2'
 main: main.shop.Shop
 api-version: '1.21'
 author: Macsig74
@@ -21,3 +21,11 @@ commands:
   setafk:
     usage: /setafk
     description: Définit la zone AFK
+
+  macsigcore:
+    usage: /macsigcore reload
+    description: Recharge la config
+
+  shard:
+    usage: /shard <give|take|set|dump> <player> [amount]
+    description: Gère les shards

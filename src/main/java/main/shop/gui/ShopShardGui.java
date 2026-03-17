@@ -98,22 +98,11 @@ public class ShopShardGui implements InventoryHolder, Listener {
             if (section == null) continue;
             for (String key : section.getKeys(false)) {
                 if (section.getInt(key + ".slot") != slot) continue;
-
                 int price = section.getInt(key + ".price");
                 String command = section.getString(key + ".command");
-
-                try {
-                    int shards = Shop.getInstance().getShardManager().getShards(p);
-                    if (shards < price) {
-                        p.sendMessage("§cTu n'as pas assez de shards ! §5(" + shards + "/" + price + ")");
-                        return;
-                    }
-                    Shop.getInstance().getShardManager().setShards(p, shards - price);
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", p.getName()));
-                } catch (SQLException ex) {
-                    p.sendMessage("§cErreur lors de l'achat !");
-                    ex.printStackTrace();
-                }
+                Material material = Material.valueOf(section.getString(key + ".material"));
+                String name = section.getString(key + ".name");
+                new ShardBuyConfirmGui(plugin, material, name, price, command).open(p);
                 return;
             }
         }
