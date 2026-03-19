@@ -1,0 +1,37 @@
+custom-messages:
+  owner:
+    permission: "aot.owner"
+    join:
+      - "§4[OWNER] §c%player% §7a rejoint le serveur !"
+      - "§4⚡ %player% §7est de retour !"
+    quit:
+      - "§4[OWNER] §c%player% §7a quitté le serveur."
+    kill:
+      - "§4%player% §7a éliminé §c%victim% §7!"
+  staff:
+    permission: "aot.staff"
+    join:
+      - "§b[STAFF] §3%player% §7a rejoint le serveur !"
+      - "§b⚡ %player% §7est en ligne !"
+    quit:
+      - "§b[STAFF] §3%player% §7a quitté."
+    kill:
+      - "§b%player% §7a éliminé §c%victim% §7!"
+  aotplus:
+    permission: "aot.plus"
+    join:
+      - "§6[AOT+] §e%player% §7a rejoint !"
+      - "§6✦ %player% §7est arrivé !"
+    quit:
+      - "§6[AOT+] §e%player% §7est parti."
+    kill:
+      - "§6%player% §7a tué §c%victim% §7!"
+  aotplusplus:
+    permission: "aot.plusplus"
+    join:
+      - "§d[AOT++] §5%player% §7a rejoint !"
+      - "§d✦✦ %player% §7est arrivé !"
+    quit:
+      - "§d[AOT++] §5%player% §7est parti."
+    kill:
+      - "§d%player% §7a tué §c%victim% §7!"

@@ -1,5 +1,5 @@
 name: Shop
-version: '2.1.2'
+version: '3.0.0'
 main: main.shop.Shop
 api-version: '1.21'
 author: Macsig74
@@ -52,3 +52,7 @@ commands:
   rules:
     usage: /rules
     description: donne les règles
+
+  message:
+    usage: /message
+    description: Changer ses messages custom
