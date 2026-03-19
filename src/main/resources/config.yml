@@ -40,6 +40,32 @@ shard-shop:
 
 
 
+media:
+  title: "§8Role Media"
+  material: IRON_HELMET
+  item-name: "§bRole Media"
+  lore:
+    - "§7Rejoins notre équipe media !"
+    - "§7Discord : discord.gg/aotsmp"
+
+soutien:
+  title: "§4Role soutien"
+  material: COMPASS
+  item-name: "§bRole soutien"
+  lore:
+    - "fais /link tdb va"
+
+rules:
+  title: "les regles"
+  material: BOOK
+  item-name: "les règles"
+  lore:
+    - "suis les règles"
+
+
+
+
+
 
 spawn:
   world: world

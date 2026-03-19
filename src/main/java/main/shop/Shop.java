@@ -26,6 +26,12 @@ public class Shop extends JavaPlugin {
         getCommand("spawn").setExecutor(new SpawnCommand(this));
         getCommand("shard").setExecutor(new ShardCommand(this));
         getCommand("macsigcore").setExecutor(new ReloadCommand(this));
+        getCommand("rtp").setExecutor(new RtpCommand(this));
+        getCommand("media").setExecutor(new MediaCommand(this));
+        getCommand("discord").setExecutor(new DiscordCommand(this));
+        getCommand("soutien").setExecutor(new SoutienCommand(this));
+        getCommand("rules").setExecutor(new RulesCommand(this));
+        getCommand("store").setExecutor(new StoreCommand(this));
         new AfkListener(this);
 
         ess = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");

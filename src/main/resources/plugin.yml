@@ -29,3 +29,26 @@ commands:
   shard:
     usage: /shard <give|take|set|dump> <player> [amount]
     description: Gère les shards
+  rtp:
+    usage: /rtp
+    description: Téléportation aléatoire
+
+  discord:
+    usage: /discord
+    description: donne lien serveur discord
+
+  store:
+    usage: /store
+    description:  donne lien store
+
+  media:
+    usage: /media
+    description: /condition pour media
+
+  soutien:
+    usage: /soutien
+    description: conditions grades soutien
+
+  rules:
+    usage: /rules
+    description: donne les règles
